@@ -8,7 +8,6 @@ function ToastShelf() {
 
   React.useEffect(() => {
     const keydownHandler = (e) => {
-      console.log(e.code);
       if (e.code === "Escape") {
         dismissAllToasts();
       }
@@ -22,7 +21,12 @@ function ToastShelf() {
   }, [dismissAllToasts]);
 
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      role={"region"}
+      className={styles.wrapper}
+      aria-live="polite"
+      aria-label="Notification"
+    >
       {toasts.map((toast) => {
         return (
           <li key={toast.id} className={styles.toastWrapper}>
